@@ -2,12 +2,12 @@ from tkinter import *
 import tkinter as tk
 import json
 from tkinter import filedialog
+from PIL import Image, ImageTk
 
 window = Tk()
 window.geometry("800x800")
 window.resizable(0, 0)
 window.title("Agenda")
-bg = PhotoImage(file="background.png")
 
 FILE_NAME = "agenda.json"
 
@@ -43,9 +43,13 @@ def load_file():
             print("Error loading file:", e)
 
 blank_image = tk.PhotoImage(width=100, height=40)
+Iu_image = Image.open("IU.png").resize((200, 100))
+IU_image = ImageTk.PhotoImage(Iu_image)
+IU_Label = Label(window, image=IU_image)
+IU_Label.place(x=320, y=30)
 
 entry_widget = Entry(window)
-entry_widget.place(x=350, y=150)
+entry_widget.place(x=360, y=150)
 entry_widget.focus()
 
 add_button = tk.Button(window, text="Add Item", command=add_item, image=blank_image, compound=CENTER)
@@ -63,7 +67,5 @@ load_button.place(x=260, y=220)
 
 listBox = tk.Listbox(window, height=30, width=90)
 listBox.pack(side=BOTTOM, pady=20)
-
-
 
 window.mainloop()
