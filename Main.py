@@ -42,7 +42,10 @@ def load_file():
         except Exception as e:
             print("Error loading file:", e)
 
+#Blank image to help resize buttons
 blank_image = tk.PhotoImage(width=100, height=40)
+
+#IU Logo image and Label
 Iu_image = Image.open("IU.png").resize((200, 100))
 IU_image = ImageTk.PhotoImage(Iu_image)
 IU_Label = Label(window, image=IU_image)
